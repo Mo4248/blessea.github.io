@@ -1,0 +1,35 @@
+/* ページ全体の設定 */
+body {
+    background-color: #2b2b2b;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+
+/* 見出しの設定 */
+h1 {
+    color: #7dc4fd;
+    font-size: 48px;
+}
+
+/* 段落テキストの設定 */
+p {
+    font-size: 24px;
+    color: #9adcd1;
+}
+
+/* リンク（ボタン）の設定 */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #2b2b2b;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* リンクにホバーした時のスタイル */
+a:hover {
+    background-color: #7dc4fd;
+}
