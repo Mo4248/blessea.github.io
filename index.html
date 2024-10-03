@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blessea Simulation</title>
-    <link rel="stylesheet" href="style.css"> <!-- CSSをリンク -->
+    <link rel="stylesheet" href="style.css"> <!-- CSSのリンク -->
     <script src="simulation.js"></script> <!-- WebAssemblyの呼び出し -->
 </head>
 <body>
@@ -12,9 +12,6 @@
     <p>Your gateway to the ocean of inspiration and exploration.</p>
 
     <!-- Run Simulation ボタン -->
-    <button id="runButton">Run Simulation</button>
-
-    <!-- 出力エリア -->
-    <div id="output" style="color: #ffffff; margin-top: 20px;"></div>
+    <button onclick="Module._my_main()">Run Simulation</button>
 </body>
 </html>
