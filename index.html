@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blessea</title>
-
+    <title>Blessea - Simulation</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Welcome to Blessea</h1>
-    <p>こんにちは</p>
-    <a href="#about">Click!</a>
+    <p>Click the button to run the simulation:</p>
+    <button onclick="runSimulation()">Run Simulation</button>
+
+    <script src="simulation.js"></script>
+    <script>
+        function runSimulation() {
+            Module.onRuntimeInitialized = function() {
+                Module._main();
+            };
+        }
+    </script>
 </body>
 </html>
