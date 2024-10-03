@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blessea Simulation</title>
-    <link rel="stylesheet" href="style.css"> <!-- CSSのリンク -->
-    <script src="simulation.js"></script> <!-- WebAssemblyの呼び出し -->
+    <link rel="stylesheet" href="style.css">
+    <script src="simulation.js"></script> <!-- Emscriptenが生成したJSファイル -->
 </head>
 <body>
     <h1>Welcome to Blessea</h1>
     <p>Your gateway to the ocean of inspiration and exploration.</p>
 
-    <!-- Run Simulation ボタン -->
-    <button onclick="Module._my_main()">Run Simulation</button>
+    <!-- シミュレーション実行ボタン -->
+    <button id="run-simulation">Run Simulation</button>
+
+    <script>
+        // シミュレーションボタンがクリックされたときの処理
+        document.getElementById('run-simulation').addEventListener('click', function() {
+            // Emscriptenで生成されたModuleオブジェクトを利用してWebAssembly関数を呼び出す
+            Module.onRuntimeInitialized = () => {
+                Module._main();  // C言語で定義されたmain関数を呼び出す
+            };
+        });
+    </script>
 </body>
 </html>
