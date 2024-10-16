@@ -3,49 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blessea</title>
-    <style>
-        body { margin: 0; }
-        canvas { display: block; }
-    </style>
+    <title>Tokyo Dome Stage Simulation</title>
+    <style> body { margin: 0; } canvas { display: block; } </style>
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // シーンを作成
+        // シーン、カメラ、レンダラーの作成
         var scene = new THREE.Scene();
-
-        // カメラを作成
         var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-        // レンダラーを作成してサイズを設定
         var renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // 立方体を作成
-        var geometry = new THREE.BoxGeometry();
-        var material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-        var cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+        // ステージの床を作成
+        var stageGeometry = new THREE.BoxGeometry(20, 1, 10);
+        var stageMaterial = new THREE.MeshStandardMaterial({ color: 0x555555 });
+        var stage = new THREE.Mesh(stageGeometry, stageMaterial);
+        stage.position.y = -1; // 少し下に配置
+        scene.add(stage);
 
-        // 照明の追加
-        var light = new THREE.SpotLight(0xffffff);
-        light.position.set(10, 10, 10);
-        scene.add(light);
+        // 照明の作成（スポットライトを無数に配置）
+        var lights = [];
+        for (var i = 0; i < 20; i++) {
+            var light = new THREE.SpotLight(0xffffff, 1, 100, Math.PI / 6, 0.5);
+            light.position.set(Math.random() * 20 - 10, 5, Math.random() * 10 - 5); // ランダムに配置
+            light.target.position.set(0, 0, 0); // ステージ中心を照らす
+            scene.add(light.target);
+            scene.add(light);
+            lights.push(light);
+        }
 
-        // カメラの位置
-        camera.position.z = 5;
+        // 観客席の再現（簡略化のために半円形の構造を作成）
+        var audienceGeometry = new THREE.CylinderGeometry(15, 15, 5, 32, 1, true, Math.PI / 2, Math.PI);
+        var audienceMaterial = new THREE.MeshStandardMaterial({ color: 0x333333, wireframe: true });
+        var audience = new THREE.Mesh(audienceGeometry, audienceMaterial);
+        audience.position.y = -1;
+        audience.rotation.x = Math.PI / 2;
+        audience.rotation.z = -Math.PI / 2;
+        scene.add(audience);
 
-        // アニメーション
+        // ステージ上のメインライト（例として1つだけ設置）
+        var mainLight = new THREE.PointLight(0xff0000, 2, 50); // 赤色のライト
+        mainLight.position.set(0, 5, 0); // ステージ上に配置
+        scene.add(mainLight);
+
+        // 環境光
+        var ambientLight = new THREE.AmbientLight(0x404040); // 微かな全体照明
+        scene.add(ambientLight);
+
+        // カメラ位置
+        camera.position.set(0, 5, 25);
+        camera.lookAt(0, 0, 0);
+
+        // アニメーションループ
         function animate() {
             requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
 
-            // 照明の位置を動かす
-            light.position.x = Math.sin(Date.now() * 0.001) * 10;
-            light.position.z = Math.cos(Date.now() * 0.001) * 10;
+            // ライトを動かす
+            lights.forEach(function(light, index) {
+                light.position.x = Math.sin(Date.now() * 0.001 + index) * 10;
+                light.position.z = Math.cos(Date.now() * 0.001 + index) * 5;
+            });
 
             renderer.render(scene, camera);
         }
