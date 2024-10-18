@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>音楽同期のライトシミュレーション</title>
-    <style> body { margin: 0; } canvas { display: block; } </style>
+    <style> 
+        body { margin: 0; } 
+        canvas { display: block; } 
+    </style>
 </head>
 <body>
+    <!-- Three.js ライブラリを読み込む -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script>
-        // Three.jsの設定
+        // Three.jsの基本設定
         var scene = new THREE.Scene();
         var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         var renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // 照明の設置
+        // 照明をセットアップ
         var lights = [];
         for (var i = 0; i < 20; i++) {
             var light = new THREE.SpotLight(0xffffff, 1, 100, Math.PI / 6, 0.5);
@@ -27,8 +32,8 @@
             lights.push(light);
         }
 
-        // 音楽ファイルを読み込む（m4a形式）
-        var audio = new Audio('audio/「スターゲイザー」（Live DVD & Blu-ray 『Du Gara Di Du』より） - YouTube.m4a');
+        // Web Audio APIを使って音楽をロード
+        var audio = new Audio('audio/「スターゲイザー」（Live DVD & Blu-ray 『Du Gara Di Du』より） - YouTube.m4a');  // 音楽ファイルのパスを指定
         var audioContext = new (window.AudioContext || window.webkitAudioContext)();
         var analyser = audioContext.createAnalyser();
         analyser.fftSize = 256;
@@ -38,21 +43,23 @@
 
         var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
-        audio.play();  // 音楽を再生
+        // 音楽を再生
+        audio.play();
 
-        // 照明のアニメーション（音楽と同期）
+        // アニメーションループ
         function animate() {
             requestAnimationFrame(animate);
 
             // 音楽の周波数データを取得
             analyser.getByteFrequencyData(frequencyData);
 
-            // ライトを音楽に合わせて変更
+            // 照明の強度と色を音楽に合わせて変更
             lights.forEach(function(light, index) {
                 var intensity = frequencyData[index % frequencyData.length] / 256;
                 light.intensity = intensity * 2;
                 light.color.setHSL(intensity, 1, 0.5);
 
+                // ライトの位置も変更
                 light.position.x = Math.sin(Date.now() * 0.001 + index) * 10;
                 light.position.z = Math.cos(Date.now() * 0.001 + index) * 5;
             });
@@ -61,7 +68,7 @@
         }
         animate();
 
-        // iOSの制限に対応してクリックで再生開始
+        // ブラウザの制限により、クリックで音楽再生を許可する
         document.addEventListener('click', function () {
             audioContext.resume();
         });
