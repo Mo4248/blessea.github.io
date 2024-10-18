@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tokyo Dome Stage Simulation with Music Sync</title>
+    <title>音楽同期のライトシミュレーション</title>
     <style> body { margin: 0; } canvas { display: block; } </style>
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // シーン、カメラ、レンダラーの作成
+        // Three.jsの設定
         var scene = new THREE.Scene();
         var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         var renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // ステージの床を作成
-        var stageGeometry = new THREE.BoxGeometry(20, 1, 10);
-        var stageMaterial = new THREE.MeshStandardMaterial({ color: 0x555555 });
-        var stage = new THREE.Mesh(stageGeometry, stageMaterial);
-        stage.position.y = -1;
-        scene.add(stage);
-
-        // スポットライトの配置
+        // 照明の設置
         var lights = [];
         for (var i = 0; i < 20; i++) {
             var light = new THREE.SpotLight(0xffffff, 1, 100, Math.PI / 6, 0.5);
@@ -34,25 +27,8 @@
             lights.push(light);
         }
 
-        // 観客席
-        var audienceGeometry = new THREE.CylinderGeometry(15, 15, 5, 32, 1, true, Math.PI / 2, Math.PI);
-        var audienceMaterial = new THREE.MeshStandardMaterial({ color: 0x333333, wireframe: true });
-        var audience = new THREE.Mesh(audienceGeometry, audienceMaterial);
-        audience.position.y = -1;
-        audience.rotation.x = Math.PI / 2;
-        audience.rotation.z = -Math.PI / 2;
-        scene.add(audience);
-
-        // 環境光
-        var ambientLight = new THREE.AmbientLight(0x404040);
-        scene.add(ambientLight);
-
-        // カメラ位置
-        camera.position.set(0, 5, 25);
-        camera.lookAt(0, 0, 0);
-
-        // Web Audio APIの設定
-        var audio = new Audio('「スターゲイザー」（Live DVD & Blu-ray 『Du Gara Di Du』より） - YouTube.m4a'); // 音楽ファイルのパスを指定
+        // 音楽ファイルを読み込む（m4a形式）
+        var audio = new Audio('audio/audio/「スターゲイザー」（Live DVD & Blu-ray 『Du Gara Di Du』より） - YouTube.m4a');
         var audioContext = new (window.AudioContext || window.webkitAudioContext)();
         var analyser = audioContext.createAnalyser();
         analyser.fftSize = 256;
@@ -62,22 +38,21 @@
 
         var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 
-        audio.play(); // 音楽を再生
+        audio.play();  // 音楽を再生
 
-        // アニメーションループ
+        // 照明のアニメーション（音楽と同期）
         function animate() {
             requestAnimationFrame(animate);
 
             // 音楽の周波数データを取得
             analyser.getByteFrequencyData(frequencyData);
 
-            // ライトを音楽に合わせて動かす
+            // ライトを音楽に合わせて変更
             lights.forEach(function(light, index) {
-                var intensity = frequencyData[index % frequencyData.length] / 256; // 音量に応じた光の強さ
+                var intensity = frequencyData[index % frequencyData.length] / 256;
                 light.intensity = intensity * 2;
-                light.color.setHSL(intensity, 1, 0.5); // 音楽に応じて色を変更
+                light.color.setHSL(intensity, 1, 0.5);
 
-                // ライトの動きを複雑にする
                 light.position.x = Math.sin(Date.now() * 0.001 + index) * 10;
                 light.position.z = Math.cos(Date.now() * 0.001 + index) * 5;
             });
@@ -86,7 +61,7 @@
         }
         animate();
 
-        // ページクリックで音楽を再生（iOS対応）
+        // iOSの制限に対応してクリックで再生開始
         document.addEventListener('click', function () {
             audioContext.resume();
         });
