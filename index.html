@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音楽同期のライトシミュレーション</title>
+    <title>ランダムなライト演出シミュレーション</title>
     <style> 
         body { margin: 0; } 
         canvas { display: block; } 
@@ -32,46 +32,36 @@
             lights.push(light);
         }
 
-        // Web Audio APIを使って音楽をロード
-        var audio = new Audio('audio/「スターゲイザー」（Live DVD & Blu-ray 『Du Gara Di Du』より） - YouTube.m4a');  // 音楽ファイルのパスを指定
-        var audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        var analyser = audioContext.createAnalyser();
-        analyser.fftSize = 256;
-        var source = audioContext.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioContext.destination);
+        // ステージの床を作成
+        var floorGeometry = new THREE.PlaneGeometry(50, 50);
+        var floorMaterial = new THREE.MeshBasicMaterial({ color: 0x111111, side: THREE.DoubleSide });
+        var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+        floor.rotation.x = Math.PI / 2;
+        scene.add(floor);
 
-        var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-
-        // 音楽を再生
-        audio.play();
+        // カメラの位置を設定
+        camera.position.z = 30;
+        camera.position.y = 10;
 
         // アニメーションループ
         function animate() {
             requestAnimationFrame(animate);
 
-            // 音楽の周波数データを取得
-            analyser.getByteFrequencyData(frequencyData);
-
-            // 照明の強度と色を音楽に合わせて変更
+            // ライトの強度と色をランダムに変更
             lights.forEach(function(light, index) {
-                var intensity = frequencyData[index % frequencyData.length] / 256;
+                var intensity = Math.random();
                 light.intensity = intensity * 2;
                 light.color.setHSL(intensity, 1, 0.5);
 
-                // ライトの位置も変更
+                // ライトの位置もランダムに動かす
                 light.position.x = Math.sin(Date.now() * 0.001 + index) * 10;
                 light.position.z = Math.cos(Date.now() * 0.001 + index) * 5;
             });
 
             renderer.render(scene, camera);
         }
-        animate();
 
-        // ブラウザの制限により、クリックで音楽再生を許可する
-        document.addEventListener('click', function () {
-            audioContext.resume();
-        });
+        animate();
     </script>
 </body>
 </html>
