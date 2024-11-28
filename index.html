@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>サービス紹介 | シンプル&モダン</title>
+  <title>会社名 | ホームページ</title>
   <style>
     body {
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
       line-height: 1.6;
+      color: #333;
     }
     header {
-      background: #333;
+      background: #0078d7;
       color: #fff;
       padding: 10px 20px;
       display: flex;
@@ -23,51 +24,57 @@
       margin: 0;
       font-size: 24px;
     }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    nav li {
+      margin: 0 15px;
+    }
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 0 10px;
+      font-size: 16px;
     }
     nav a:hover {
       text-decoration: underline;
     }
     .hero {
       text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(to right, #6a11cb, #2575fc);
-      color: #fff;
+      padding: 80px 20px;
+      background: #f4f4f4;
     }
     .hero h2 {
       font-size: 36px;
+      color: #0078d7;
       margin-bottom: 20px;
     }
     .hero p {
       font-size: 18px;
+      color: #555;
     }
-    .services {
-      display: flex;
-      justify-content: space-around;
+    .section {
       padding: 50px 20px;
     }
-    .service {
-      text-align: center;
-      max-width: 300px;
-    }
-    .service h3 {
+    .section h3 {
+      font-size: 24px;
+      color: #333;
       margin-bottom: 10px;
     }
-    .service p {
+    .section p {
       font-size: 16px;
       color: #555;
     }
     footer {
       text-align: center;
       padding: 20px;
-      background: #f4f4f4;
-      color: #555;
+      background: #333;
+      color: #fff;
     }
     footer a {
-      color: #6a11cb;
+      color: #0078d7;
       text-decoration: none;
     }
   </style>
@@ -75,36 +82,45 @@
 <body>
 
 <header>
-  <h1>My Service</h1>
+  <h1>会社名</h1>
   <nav>
-    <a href="#hero">ホーム</a>
-    <a href="#services">サービス</a>
-    <a href="#contact">お問い合わせ</a>
+    <ul>
+      <li><a href="#home">ホーム</a></li>
+      <li><a href="#business">ビジネス</a></li>
+      <li><a href="#company">カンパニー</a></li>
+      <li><a href="#community">コミュニティー</a></li>
+      <li><a href="#contact">コンタクト</a></li>
+    </ul>
   </nav>
 </header>
 
-<section id="hero" class="hero">
-  <h2>あなたの未来をサポートするサービス</h2>
-  <p>シンプルかつ効果的なソリューションを提供します!!</p>
+<section id="home" class="hero">
+  <h2>私たちは未来を創る会社です</h2>
+  <p>信頼と革新を基に、次世代のビジネスをリードします。</p>
 </section>
 
-<section id="services" class="services">
-  <div class="service">
-    <h3>サービス1</h3>
-    <p>お客様の課題を解決するためのカスタムソリューション。</p>
-  </div>
-  <div class="service">
-    <h3>サービス2</h3>
-    <p>効率的なプロセスをサポートするツールの提供。</p>
-  </div>
-  <div class="service">
-    <h3>サービス3</h3>
-    <p>継続的なサポートであなたの成長を後押しします。</p>
-  </div>
+<section id="business" class="section">
+  <h3>ビジネス</h3>
+  <p>私たちは様々な業界に向けて、カスタマイズされたソリューションを提供します。</p>
+</section>
+
+<section id="company" class="section">
+  <h3>カンパニー</h3>
+  <p>会社概要や理念、私たちの歴史を知ってください。</p>
+</section>
+
+<section id="community" class="section">
+  <h3>コミュニティー</h3>
+  <p>地域や業界との連携を大切にし、共に成長することを目指しています。</p>
+</section>
+
+<section id="contact" class="section">
+  <h3>コンタクト</h3>
+  <p>お問い合わせはお気軽にどうぞ。メールまたは電話でお答えします。</p>
 </section>
 
 <footer>
-  <p>&copy; 2024 My Service. All rights reserved. | <a href="#contact">お問い合わせ</a></p>
+  <p>&copy; 2024 会社名. All rights reserved. | <a href="#contact">お問い合わせ</a></p>
 </footer>
 
 </body>
