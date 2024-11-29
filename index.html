@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>株式会社 kayamaza</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私のブログ</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>私のブログ</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#about">アバウト</a></li>
+                <li><a href="#contact">コンタクト</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-  <h1>kayamza</h1>
-  <nav>
-    <ul>
-      <li><a href="#home">ホーム</a></li>
-      <li><a href="#business">ビジネス</a></li>
-      <li><a href="#company">カンパニー</a></li>
-      <li><a href="#community">コミュニティー</a></li>
-      <li><a href="#contact">コンタクト</a></li>
-    </ul>
-  </nav>
-</header>
+    <section id="home">
+        <h2>最新の記事</h2>
+        <article>
+            <h3>ブログ投稿タイトル1</h3>
+            <p>ここに記事の内容が入ります。内容は簡潔で読みやすくしてください。</p>
+        </article>
 
-<section id="home" class="hero">
-  <h2>未来を形にする、あなたのパートナー</h2>
-  <p>私たちは革新的なアイデアと確かな技術で、新しい時代を切り開いていきます。</p>
-</section>
+        <article>
+            <h3>ブログ投稿タイトル2</h3>
+            <p>別の投稿内容です。写真やリンクも挿入できます。</p>
+        </article>
+    </section>
 
-<section id="business" class="section">
-  <h3>ビジネス</h3>
-  <div class="icon">🧳</div>
-  <p>多様な業界で豊富な経験を持つ私たちは、お客様に最適なソリューションを提供します。企業の成長と成功を支えるために、私たちの専門的なサービスがどのように役立つかをお伝えします。</p>
-</section>
+    <section id="about">
+        <h2>アバウト</h2>
+        <p>こんにちは、私は〇〇です。このブログでは〇〇について書いています。</p>
+    </section>
 
-<section id="company" class="section">
-  <h3>カンパニー</h3>
-  <div class="icon">🏢</div>
-  <p>私たちの会社は、社員一人ひとりが誇りを持って働ける環境を提供しています。革新、誠実、そしてチームワークを大切にし、共に成長する企業文化を築いています。</p>
-</section>
+    <section id="contact">
+        <h2>コンタクト</h2>
+        <p>質問やコメントがあれば、こちらから連絡ください。</p>
+        <form>
+            <label for="name">名前:</label>
+            <input type="text" id="name" name="name" required>
 
-<section id="community" class="section">
-  <h3>コミュニティー</h3>
-  <div class="icon">🌍</div>
-  <p>地域社会や業界とのつながりを大切にし、持続可能な未来を目指しています。私たちは共に成長するパートナーとして、社会貢献活動にも積極的に取り組んでいます。</p>
-</section>
+            <label for="email">メールアドレス:</label>
+            <input type="email" id="email" name="email" required>
 
-<section id="contact" class="section">
-  <h3>コンタクト</h3>
-  <div class="icon">📞</div>
-  <p>お気軽にご連絡ください。私たちの専門チームがあなたの質問に迅速に対応いたします。</p>
-</section>
+            <label for="message">メッセージ:</label>
+            <textarea id="message" name="message" required></textarea>
 
-<footer>
-  <p>&copy; 2024 会社名. All rights reserved. | <a href="#contact">お問い合わせ</a></p>
-</footer>
+            <button type="submit">送信</button>
+        </form>
+    </section>
 
+    <footer>
+        <p>&copy; 2024 私のブログ</p>
+    </footer>
 </body>
 </html>
