@@ -28,6 +28,7 @@
   header h1 {
     margin: 0;                   /* 余白をなくす */
     font-size: 28px;             /* フォントサイズ */
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;           /* 太字 */
   }
   
@@ -61,7 +62,6 @@
     text-align: center;          /* テキストの中央揃え */
     padding: 120px 20px;         /* 上下120px、左右20pxの内側余白 */
     background: url('IMG_3718.heic') no-repeat center center/cover; /* 背景画像 */
-    background-size: auto 500px;
     color: #ffffff;                 /* テキストの色 */
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); /* 内側に影を付ける */
   }
