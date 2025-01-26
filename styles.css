@@ -85,20 +85,43 @@ h1, h2 {
     list-style: none;
     padding: 0;
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 #word-list li {
-    padding: 0.8rem;
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s;
+    padding: 1rem;
+    border: 2px solid #D4A373;
+    border-radius: 10px;
+    background-color: #fffdf5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 
 #word-list li:hover {
+    transform: translateY(-3px);
     background-color: #fff1d6;
 }
 
-#word-list li:last-child {
-    border-bottom: none;
+#word-list li span.korean {
+    font-size: 1.2rem;
+    color: #8B5C34;
+    font-weight: bold;
+}
+
+#word-list li span.pronunciation {
+    display: block;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.2rem;
+}
+
+#word-list li span.meaning {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
 }
 
 /* クイズボタン */
