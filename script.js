@@ -4,6 +4,7 @@ const words = [
     { korean: "행복", meaning: "幸福" },
     { korean: "시간", meaning: "時間" },
     { korean: "희망", meaning: "希望" },
+    { korean: "안녕하세요", meaning: "こんにちは" },
   ];
   
   // DOM 要素の取得
