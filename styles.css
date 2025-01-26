@@ -67,7 +67,7 @@ section:before {
     height: 100%;
     background-image: url('https://via.placeholder.com/300x200.png?text=%E9%9F%93%E5%9B%BD%E4%BC%9D%E7%B5%B1%E6%A8%A1%E6%A7%98');
     background-size: 100px 100px;
-    opacity: 0.1;
+    opacity: 0.9;
     z-index: 0;
 }
 
