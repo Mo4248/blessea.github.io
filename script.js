@@ -1,6 +1,9 @@
-// 曲をクリックすると歌詞を表示/非表示にする
-document.querySelectorAll('.song-item').forEach(item => {
-  item.addEventListener('click', () => {
-    item.classList.toggle('active');
-  });
-});
+// サイドバーを開く関数
+function openNav() {
+  document.getElementById("sidebar").style.width = "250px";
+}
+
+// サイドバーを閉じる関数
+function closeNav() {
+  document.getElementById("sidebar").style.width = "0";
+}
