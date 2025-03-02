@@ -40,57 +40,21 @@ header p {
     font-size: 1.2em;
 }
 
-/* アーティスト紹介セクション */
-.artist-introduction {
+/* アーティストカード */
+.artist-card {
     text-align: center;
-    margin: 30px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    margin: 20px;
+}
+
+.artist-card img {
+    width: 250px;
+    height: auto;
     border-radius: 10px;
 }
 
-/* サイドバーメニュー */
-.sidebar {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidebar a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-span {
-  font-size: 30px;
-  cursor: pointer;
-  color: white;
-  position: fixed;
-  top: 20px;
-  left: 20px;
+.artist-card h3 {
+    font-size: 1.5em;
+    margin-top: 10px;
 }
 
 /* メニュー */
@@ -108,6 +72,7 @@ span {
 .menu ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
 .menu-item {
@@ -119,26 +84,15 @@ span {
     transition: transform 0.3s ease, background 0.3s ease;
 }
 
+.menu-item a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+}
+
 .menu-item:hover {
     transform: scale(1.05);
     background: #1a1a2e;
-}
-
-/* アーティストカード */
-.artist-card {
-    text-align: center;
-    margin: 20px;
-}
-
-.artist-card img {
-    width: 250px;
-    height: auto;
-    border-radius: 10px;
-}
-
-.artist-card h3 {
-    font-size: 1.5em;
-    margin-top: 10px;
 }
 
 /* アニメーション */
@@ -164,8 +118,12 @@ span {
     }
 }
 
-/* サイドバーを開く/閉じる */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
+/* ホバー時のカードアニメーション */
+.artist-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artist-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
