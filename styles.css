@@ -7,132 +7,123 @@ body {
     padding: 0;
     overflow-x: hidden;
     position: relative;
-  }
-  
-  /* 星の背景エフェクト */
-  @keyframes sparkle {
+}
+
+/* 星の背景エフェクト */
+@keyframes sparkle {
     0% { opacity: 0; }
     50% { opacity: 1; }
     100% { opacity: 0; }
-  }
-  
-  .stars {
+}
+
+.stars {
     position: absolute;
     width: 100%;
     height: 100%;
     background: url('stars.png') repeat;
     animation: sparkle 1.5s infinite;
     z-index: -1;
-  }
-  
-  /* ヘッダー */
-  header {
+}
+
+/* ヘッダー */
+header {
     text-align: center;
     margin-top: 50px;
-  }
-  
-  header h1 {
+}
+
+header h1 {
     font-size: 3em;
     margin-bottom: 0.2em;
-  }
-  
-  header p {
+}
+
+header p {
     font-size: 1.2em;
-  }
-  
-  /* アーティスト紹介セクション */
-  .artist-introduction {
+}
+
+/* アーティストカード */
+.artist-card {
     text-align: center;
-    margin: 30px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    margin: 20px;
+}
+
+.artist-card img {
+    width: 250px;
+    height: auto;
     border-radius: 10px;
-  }
-  
-  /* 曲一覧 */
-  .song-list {
+}
+
+.artist-card h3 {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+/* メニュー */
+.menu {
     margin: 50px 0;
     padding: 0 20px;
-  }
-  
-  .song-list h2 {
+}
+
+.menu h2 {
     font-size: 2.5em;
     text-align: center;
     margin-bottom: 30px;
-  }
-  
-  .song-list ul {
+}
+
+.menu ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .song-item {
+    text-align: center;
+}
+
+.menu-item {
     padding: 15px;
     background: #16213e;
     margin: 10px 0;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.3s ease, background 0.3s ease;
-  }
-  
-  .song-item:hover {
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+}
+
+.menu-item:hover {
     transform: scale(1.05);
     background: #1a1a2e;
-  }
-  
-  .song-lyrics {
-    display: none;
-    margin-top: 10px;
-    font-style: italic;
-  }
-  
-  /* アーティストカード */
-  .artist-card {
-    text-align: center;
-    margin: 20px;
-  }
-  
-  .artist-card img {
-    width: 250px;
-    height: auto;
-    border-radius: 10px;
-  }
-  
-  .artist-card h3 {
-    font-size: 1.5em;
-    margin-top: 10px;
-  }
-  
-  /* アニメーション */
-  .fade-in {
+}
+
+/* アニメーション */
+.fade-in {
     opacity: 0;
     animation: fadeIn 2s forwards;
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
-  
-  .slide-in {
+}
+
+.slide-in {
     transform: translateX(-100%);
     animation: slideIn 1s forwards;
-  }
-  
-  @keyframes slideIn {
+}
+
+@keyframes slideIn {
     to {
-      transform: translateX(0);
+        transform: translateX(0);
     }
-  }
-  
-  /* ホバー時のカードアニメーション */
-  .artist-card {
+}
+
+/* ホバー時のカードアニメーション */
+.artist-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .artist-card:hover {
+}
+
+.artist-card:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
+}
