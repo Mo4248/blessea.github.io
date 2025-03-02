@@ -1,155 +1,22 @@
-/* styles.css */
-
-/* ベーススタイル */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #fff7e6; /* 優しい韓国伝統の紙をイメージ */
-    color: #333;
-}
-
-/* ヘッダーとナビゲーション */
-header {
-    background-color: #856645; /* 韓国伝統色：温かみのある茶色 */
+    background: linear-gradient(to bottom, #001f3f, #003366);
     color: white;
-    padding: 1.5rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-}
-
-header nav ul li {
-    margin: 0 1.5rem;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: color 0.3s;
-}
-
-header nav ul li a:hover {
-    color: #FFD700; /* ゴールドのアクセント */
-}
-
-/* メインセクション */
-main {
-    padding: 2rem;
-}
-
-section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: white;
-    border-radius: 15px;
-    border: 2px solid #D4A373; /* 韓国の伝統模様を意識した色 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    background-image: url('https://via.placeholder.com/600x400.png?text=%E9%9F%93%E5%9B%BD%E4%BC%9D%E7%B5%B1%E3%81%AE%E6%A8%A1%E6%A7%98');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-h1, h2 {
-    color: #856645;
+    font-family: Arial, sans-serif;
     text-align: center;
-    font-family: 'Georgia', serif;
-    margin-bottom: 1rem;
 }
-
-/* 検索バー */
-#search {
-    display: block;
-    width: 100%;
-    max-width: 400px;
-    margin: 1rem auto;
-    padding: 0.7rem;
-    border: 2px solid #D4A373;
-    border-radius: 10px;
-    font-size: 1rem;
-}
-
-/* 単語リスト */
-#word-list {
+.song-list {
     list-style: none;
     padding: 0;
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
 }
-
-#word-list li {
-    padding: 1rem;
-    border: 2px solid #D4A373;
-    border-radius: 10px;
-    background-color: #fffdf5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-#word-list li:hover {
-    transform: translateY(-3px);
-    background-color: #fff1d6;
-}
-
-#word-list li span.korean {
-    font-size: 1.2rem;
-    color: #856645;
-    font-weight: bold;
-}
-
-#word-list li span.pronunciation {
-    display: block;
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.2rem;
-}
-
-#word-list li span.meaning {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    color: #333;
-}
-
-/* クイズボタン */
-button {
-    display: block;
-    margin: 1rem auto;
-    padding: 0.7rem 1.5rem;
-    font-size: 1.1rem;
-    color: white;
-    background-color: #856645;
-    border: none;
-    border-radius: 10px;
+.song-item {
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.2s;
+    padding: 10px;
+    border-bottom: 1px solid #555;
 }
-
-button:hover {
-    background-color: #A67347;
-    transform: translateY(-2px);
-}
-
-/* フッター */
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #856645;
-    color: white;
-    font-size: 1rem;
-    border-top: 4px solid #D4A373;
+.lyrics {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }
