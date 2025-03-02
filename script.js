@@ -1,4 +1,6 @@
-function toggleLyrics(id) {
-  const lyrics = document.getElementById(id);
-  lyrics.style.display = lyrics.style.display === 'block' ? 'none' : 'block';
-}
+// 曲をクリックすると歌詞を表示/非表示にする
+document.querySelectorAll('.song-item').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('active');
+  });
+});

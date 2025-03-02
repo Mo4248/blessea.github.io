@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INORI</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEKAI NO OWARI</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>曲一覧</h1>
-    <ul class="song-list">
-        <li class="song-item" onclick="toggleLyrics('song1')">曲名1</li>
-        <div id="song1" class="lyrics">歌詞1の内容...</div>
-        
-        <li class="song-item" onclick="toggleLyrics('song2')">曲名2</li>
-        <div id="song2" class="lyrics">歌詞2の内容...</div>
+  <div class="stars"></div>
+
+  <header>
+    <h1 class="fade-in">アーティスト名</h1>
+    <p class="fade-in">アーティストの紹介とライブ情報</p>
+  </header>
+
+  <section class="artist-introduction fade-in">
+    <h2>アーティスト紹介</h2>
+    <p>アーティストの詳細な情報がここに入ります。</p>
+  </section>
+
+  <section class="song-list">
+    <h2 class="slide-in">曲一覧</h2>
+    <ul>
+      <li class="song-item">
+        <h3>曲名 1</h3>
+        <div class="song-lyrics">この曲の歌詞がここに表示されます。</div>
+      </li>
+      <li class="song-item">
+        <h3>曲名 2</h3>
+        <div class="song-lyrics">この曲の歌詞がここに表示されます。</div>
+      </li>
+      <li class="song-item">
+        <h3>曲名 3</h3>
+        <div class="song-lyrics">この曲の歌詞がここに表示されます。</div>
+      </li>
     </ul>
+  </section>
+
+  <section class="artist-card fade-in">
+    <div class="artist-card">
+      <img src="artist-image.jpg" alt="アーティスト画像">
+      <h3>アーティスト名</h3>
+    </div>
+  </section>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
