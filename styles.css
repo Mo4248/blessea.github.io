@@ -2,35 +2,10 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
     background: linear-gradient(135deg, #001F3F, #004080, #0074D9); /* 青系の宇宙イメージ */
     background-attachment: fixed;
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: white;
-}
-
-/* 背景に星が流れるエフェクト */
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('stars.gif') repeat;
-    z-index: -1;
-    animation: moveStars 20s linear infinite;
-}
-
-@keyframes moveStars {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-100%);
-    }
 }
 
 /* ヘッダー */
@@ -42,12 +17,12 @@ header {
 }
 
 .menu-icon {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: 15px;
     left: 20px;
-    font-size: 30px;
+    font-size: 40px;
     cursor: pointer;
-    z-index: 1000; /* 追加：最前面に表示 */
+    z-index: 2; /* 追加：最前面に表示 */
 }
 
 .title {
@@ -55,10 +30,13 @@ header {
     font-weight: bold;
     color: #00b5e2; /* 青系 */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 少し幻想的な影 */
+    text-align: center; /* 追加：テキストを中央揃え */
+    margin-top: 0px; /* 追加：上部の余白 */
 }
 
 .subtitle {
     font-size: 1.5rem;
+    text-align: center;
     color: #fff;
     margin-top: 10px;
 }
@@ -74,7 +52,7 @@ header {
     transform: translateX(-100%); /* 初期状態は画面の外 */
     transition: transform 0.5s ease-in-out;
     padding-top: 60px; /* ハンバーガーメニューの下に余白を確保 */
-    z-index: 999; /* 追加：サイドバーの重なり順を設定 */
+    z-index: 1; /* 追加：サイドバーの重なり順を設定 */
 }
 
 /* サイドバーが開いたとき */
@@ -120,6 +98,9 @@ header {
 /* メインセクション */
 main {
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* 中央寄せ */
+    padding-top: 60px; /* メニューアイコンと被らないように調整 */
 }
 
 /* サイト説明 */
@@ -132,6 +113,7 @@ main {
 
 /* ニュースセクション */
 .news {
+    text-align: center;
     background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
     padding: 20px;
     border-radius: 8px;
@@ -171,4 +153,101 @@ main {
     font-size: 1.2rem;
     color: #ccc;
     line-height: 1.6;
+}
+
+/* 楽曲一覧のスタイル */
+.song-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.song-item {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.song-item:hover {
+    transform: translateY(-5px);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.song-item h3 {
+    color: #ffffff;
+    margin-top: 0;
+}
+
+/* クイズのスタイル */
+.quiz-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.quiz-item {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.choice {
+    background-color: rgba(0, 181, 226, 0.2);
+    border: 2px solid #00b5e2;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.choice:hover {
+    background-color: rgba(0, 181, 226, 0.4);
+}
+
+/* 曲名リンクのスタイル */
+.song-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* 曲詳細ページのスタイル */
+.song-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.song-info {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.lyrics {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 1px;
+    line-height: 1.8;
+    /* white-space: pre-line; */
+}
+
+.lyrics-beginning {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 0px 0;
 }
