@@ -2,6 +2,7 @@ const menuIcon = document.getElementById('menu-icon');
 const sidebar = document.getElementById('sidebar');
 const menuItems = sidebar.querySelectorAll('ul li');
 
+// ハンバーガーメニューをクリックしたらサイドバーを開閉
 menuIcon.addEventListener('click', (event) => {
     sidebar.classList.toggle('open');
 
@@ -21,8 +22,13 @@ menuIcon.addEventListener('click', (event) => {
 });
 
 // サイドバー以外をクリックすると閉じる
-document.body.addEventListener('click', (event) => {
-    if (sidebar.classList.contains('open') && event.target !== menuIcon && !sidebar.contains(event.target)) {
+document.addEventListener('click', (event) => {
+    if (sidebar.classList.contains('open') && !sidebar.contains(event.target) && event.target !== menuIcon) {
         sidebar.classList.remove('open');
+        
+        // アニメーション遅延をリセット
+        menuItems.forEach((item) => {
+            item.style.transitionDelay = '0s';
+        });
     }
 });
