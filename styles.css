@@ -1,55 +1,65 @@
-/* 背景と全体のスタイル */
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(45deg, #1e2a47, #4b7cdb); /* 宇宙風の青系 */
-    color: #fff;
-}
-
-/* サイドバーのスタイル */
+/* サイドバー全体 */
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #222;
-    transition: 0.3s;
-    padding-top: 50px;
-    z-index: 1;
+    left: 0;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.9); /* 半透明の背景 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in-out;
 }
 
+/* サイドバーが開いたとき */
+.sidebar.open {
+    transform: translateY(0);
+}
+
+/* メニューアイテム */
 .sidebar ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sidebar ul li {
-    padding: 10px;
-    text-align: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition-delay: 0.2s;
 }
 
+/* サイドバーが開いたときのアニメーション */
+.sidebar.open ul li {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* メニューリンク */
 .sidebar ul li a {
     text-decoration: none;
     color: #fff;
     font-size: 18px;
+    padding: 10px 0;
+    display: block;
+    width: 100%;
+    text-align: center;
 }
 
-/* メニューアイコンのスタイル */
+/* メニューアイコン */
 .menu-icon {
     font-size: 30px;
     padding: 20px;
     cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
     z-index: 2;
-}
-
-/* コンテンツ */
-.content {
-    padding: 20px;
-}
-
-/* サイドバーが開いた状態 */
-.sidebar.open {
-    left: 0;
 }
