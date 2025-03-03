@@ -47,6 +47,7 @@ header {
     left: 20px;
     font-size: 30px;
     cursor: pointer;
+    z-index: 1000; /* 追加：最前面に表示 */
 }
 
 .title {
@@ -73,6 +74,7 @@ header {
     transform: translateX(-100%); /* 初期状態は画面の外 */
     transition: transform 0.5s ease-in-out;
     padding-top: 60px; /* ハンバーガーメニューの下に余白を確保 */
+    z-index: 999; /* 追加：サイドバーの重なり順を設定 */
 }
 
 /* サイドバーが開いたとき */
