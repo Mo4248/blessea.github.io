@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- 背景に星が流れるエフェクト -->
+    <div class="background"></div>
 
-    
-
+    <!-- ヘッダー -->
     <header>
         <div class="menu-icon" id="menu-icon">&#9776;</div>
         <nav id="sidebar" class="sidebar">
@@ -21,10 +22,27 @@
                 <li><a href="#quiz">クイズ</a></li>
             </ul>
         </nav>
+        <h1 class="title">アーティスト名</h1>
+        <h2 class="subtitle">音楽の魔法へようこそ</h2>
     </header>
-    <div class="content">
-        <!-- コンテンツをここに追加 -->
-    </div>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <section class="description">
+            <p>このサイトでは、アーティストの魅力や最新情報をお届けします。</p>
+        </section>
+        <section class="news">
+            <h3>最新ニュース</h3>
+            <ul>
+                <li>〇〇ライブツアー決定！</li>
+                <li>新曲リリース情報公開</li>
+            </ul>
+        </section>
+        <section class="artist-info">
+            <img src="artist.jpg" alt="アーティスト画像" class="artist-image">
+            <p>アーティストの紹介テキスト...</p>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>

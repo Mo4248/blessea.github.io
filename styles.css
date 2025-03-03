@@ -1,3 +1,4 @@
+/* 全体のスタイル */
 body {
     margin: 0;
     padding: 0;
@@ -11,8 +12,57 @@ body {
     color: white;
 }
 
-/* サイドバーの基本スタイル */
+/* 背景に星が流れるエフェクト */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('stars.gif') repeat;
+    z-index: -1;
+    animation: moveStars 20s linear infinite;
+}
 
+@keyframes moveStars {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    padding: 50px 0;
+    background-color: rgba(0, 0, 0, 0.6); /* 少し透明感を持たせた黒背景 */
+    position: relative;
+}
+
+.menu-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #00b5e2; /* 青系 */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* 少し幻想的な影 */
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* サイドバーの基本スタイル */
 .sidebar {
     position: fixed;
     top: 0;
@@ -65,13 +115,58 @@ body {
     text-align: center;
 }
 
-/* メニューアイコン（ハンバーガーメニュー） */
-.menu-icon {
-    font-size: 30px;
+/* メインセクション */
+main {
     padding: 20px;
-    cursor: pointer;
-    position: fixed; /* 画面の左上に固定 */
-    top: 10px;
-    left: 10px;
-    z-index: 2;
+}
+
+/* サイト説明 */
+.description {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+/* ニュースセクション */
+.news {
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明の背景 */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.news h3 {
+    font-size: 1.8rem;
+    color: #00b5e2; /* 青系 */
+    margin-bottom: 10px;
+}
+
+.news ul {
+    list-style: none;
+    padding: 0;
+    color: #fff;
+}
+
+.news ul li {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+/* アーティスト情報 */
+.artist-info {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.artist-image {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.artist-info p {
+    font-size: 1.2rem;
+    color: #ccc;
+    line-height: 1.6;
 }
