@@ -1,63 +1,44 @@
-/* サイドバーの基本スタイル */
+/* 背景デザイン */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #001F3F, #004080, #0074D9); /* 青系の宇宙イメージ */
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* メインコンテンツを中央に配置 */
+.container {
+    text-align: center;
+    z-index: 1; /* サイドバーよりも下にしない */
+}
+
+/* サイドバー（修正済み） */
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 250px; /* 左側の幅だけ */
+    width: 250px;
     height: 100%;
-    background-color: rgba(34, 34, 34, 0.9); /* 半透明の背景 */
-    transform: translateX(-100%); /* 初期状態は画面の外 */
+    background-color: rgba(34, 34, 34, 0.9);
+    transform: translateX(-100%);
     transition: transform 0.5s ease-in-out;
-    padding-top: 60px; /* ハンバーガーメニューの下に余白を確保 */
+    padding-top: 60px;
+    z-index: 2; /* サイドバーを前面に */
 }
 
-/* サイドバーが開いたとき */
-.sidebar.open {
-    transform: translateX(0);
-}
-
-/* メニューリスト */
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* メニュー項目（アニメーション用） */
-.sidebar ul li {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* サイドバーが開いたときに1つずつ出てくる */
-.sidebar.open ul li {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* メニューリンク */
-.sidebar ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    padding: 10px 0;
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-
-/* メニューアイコン（ハンバーガーメニュー） */
+/* メニューアイコン */
 .menu-icon {
     font-size: 30px;
     padding: 20px;
     cursor: pointer;
-    position: fixed; /* 画面の左上に固定 */
+    position: fixed;
     top: 10px;
     left: 10px;
-    z-index: 2;
+    z-index: 3; /* 一番上に */
 }
