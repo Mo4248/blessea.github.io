@@ -251,3 +251,123 @@ main {
     border-radius: 8px;
     margin: 0px 0;
 }
+
+/* ルビのスタイル */
+ruby {
+    ruby-align: center;
+}
+
+rt {
+    font-size: 0.5em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 英訳のスタイル */
+.translation {
+    color: rgba(255, 255, 255, 0.6);  /* 半透明の白色 */
+    font-size: 0.9em;                 /* 少し小さめのフォント */
+    margin-left: 20px;                /* 左側にインデント */
+    display: block;
+}
+
+/* 検索フォームのスタイル更新 */
+.search-section {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.search-type-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-text {
+    color: white;
+    font-size: 1.1em;
+}
+
+.search-input-row {
+    margin-bottom: 15px;
+}
+
+.filter-select {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.filter-select option {
+    background-color: #001F3F;
+    color: white;
+}
+
+/* 検索結果が見つからない場合 */
+.no-results {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* 並べ替えオプションのスタイル */
+.sort-options {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sort-options .filter-select {
+    flex: 1;
+}
+
+/* 検索フィルターのスタイル */
+.search-filters {
+    display: none; /* デフォルトで非表示 */
+}
+
+/* 作詞作曲者の選択を横に並べる */
+.credit-filters {
+    display: flex;
+    gap: 10px;
+}
+
+/* 余白の調整 */
+.credit-filters,
+.single-filter {
+    margin-bottom: 0px;
+}
+
+/* 最後の要素の余白を削除 */
+.single-filter:last-child {
+    margin-bottom: 0;
+}
+
+/* フィルターセレクトの共通スタイル */
+.credit-filters .filter-select,
+.single-filter .filter-select {
+    width: 100%;
+}

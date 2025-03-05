@@ -20,12 +20,99 @@
 
     <main>
         <h1 class="title">楽曲一覧</h1>
+        
+        <!-- 検索フォームを追加 -->
+        <div class="search-section">
+            <div class="search-type-row">
+                <select id="searchType" class="filter-select">
+                    <option value="free">フリー検索</option>
+                    <option value="title">曲名</option>
+                    <option value="lyrics">歌詞</option>
+                    <option value="credit">作詞・作曲者</option>
+                    <option value="album">アルバム</option>
+                    <option value="live">ライブ</option>
+                    <option value="artist">名義</option>
+                </select>
+                <span class="search-text">で検索</span>
+            </div>
+            <div class="search-input-row">
+                <input type="text" id="searchInput" placeholder="フリーワードで検索..." class="search-input">
+            </div>
+            <div class="search-filters" style="display: none;">
+                <!-- 作詞作曲者の選択（横並び） -->
+                <div class="credit-filters">
+                    <select id="writerFilter" class="filter-select">
+                        <option value="">作詞者を選択</option>
+                        <option value="Fukase">Fukase</option>
+                        <option value="Nakajin">Nakajin</option>
+                        <option value="Saori">Saori</option>
+                        <option value="Fukase">その他</option>
+                    </select>
+                    <select id="composerFilter" class="filter-select">
+                        <option value="">作曲者を選択</option>
+                        <option value="Fukase">Fukase</option>
+                        <option value="Nakajin">Nakajin</option>
+                        <option value="Saori">Saori</option>
+                        <option value="Fukase">その他</option>
+                    </select>
+                </div>
+                
+                <!-- その他の選択（縦並び） -->
+                <div class="single-filter">
+                    <select id="albumFilter" class="filter-select">
+                        <option value="">アルバムを選択</option>
+                        <option value="EARTH">EARTH</option>
+                        <option value="ENTERTAINMENT">ENTERTAINMENT</option>
+                        <option value="Tree">Tree</option>
+                        <option value="Lip">Lip</option>
+                        <option value="Eye">Eye</option>
+                        <option value="scentofmemory">scent of memory</option>
+                        <option value="Nautilus">Nautilus</option>
+                    </select>
+                </div>
+                <div class="single-filter">
+                    <select id="liveFilter" class="filter-select">
+                        <option value="">ライブを選択</option>
+                        <option value="MARS TOUR 2024">MARS TOUR 2024</option>
+                        <option value="Fantasy Tour 2023">Fantasy Tour 2023</option>
+                    </select>
+                </div>
+                <div class="single-filter">
+                    <select id="artistFilter" class="filter-select">
+                        <option value="">名義を選択</option>
+                        <option value="世界の終わり">世界の終わり</option>
+                        <option value="SEKAI NO OWARI">SEKAI NO OWARI</option>
+                        <option value="End of the World">End of the World</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+            </div>
+            <!-- 並べ替えオプションを追加 -->
+            <div class="sort-options">
+                <select id="sortBy" class="filter-select">
+                    <option value="">並べ替え項目</option>
+                    <option value="title">曲名</option>
+                    <option value="release">リリース日</option>
+                </select>
+                <select id="sortOrder" class="filter-select">
+                    <option value="asc">昇順</option>
+                    <option value="desc">降順</option>
+                </select>
+            </div>
+        </div>
+
         <section class="song-list">
             <a href="song-details/maboroshinoinoti.html" class="song-link">
-                <div class="song-item">
+                <div class="song-item" 
+                    data-album="EARTH" 
+                    data-album-order="3"
+                    data-lives="MARS TOUR 2024,Fantasy Tour 2023"
+                    data-marstour2024-order="5"
+                    data-fantasytour2023-order="2"
+                    data-artist="SEKAI NO OWARI">
                     <h3>幻の命</h3>
                     <p class="songwriting">作詞:深瀬慧 作曲:藤崎彩織</p>
-                    <p class="lyrics-beginning">白い星が降る夜に僕からの讃美歌を</p>
+                    <p class="lyrics-beginning">白い星が降る夜に　僕からの讃美歌を...</p>
                 </div>
             </a>
             <a href="song-details/rpg.html" class="song-link">
