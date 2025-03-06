@@ -112,22 +112,66 @@ document.addEventListener('DOMContentLoaded', function() {
         const live = liveFilter.value.toLowerCase();
         const artist = artistFilter.value.toLowerCase();
 
+        // カタカナをひらがなに変換する関数
+        function kataToHira(str) {
+            return str.replace(/[\u30A1-\u30F6]/g, function(match) {
+                var chr = match.charCodeAt(0) - 0x60;
+                return String.fromCharCode(chr);
+            });
+        }
+
+        // ひらがなをカタカナに変換する関数
+        function hiraToKata(str) {
+            return str.replace(/[\u3041-\u3096]/g, function(match) {
+                var chr = match.charCodeAt(0) + 0x60;
+                return String.fromCharCode(chr);
+            });
+        }
+
+        // テキストを検索用に正規化する関数
+        function normalizeText(text) {
+            const lower = text.toLowerCase();
+            const hira = kataToHira(lower);
+            const kata = hiraToKata(lower);
+            return [lower, hira, kata];
+        }
+
+        // 検索語を含むかチェックする関数
+        function includesSearchTerm(text, term) {
+            const [normalizedText, hiraText, kataText] = normalizeText(text);
+            const [normalizedTerm, hiraTerm, kataTerm] = normalizeText(term);
+            return normalizedText.includes(normalizedTerm) || 
+                   hiraText.includes(hiraTerm) || 
+                   kataText.includes(kataTerm);
+        }
+
         songItems.forEach(item => {
             let matches = false;
             
             switch(type) {
                 case 'free':
-                    matches = item.textContent.toLowerCase().includes(searchTerm);
+                    matches = includesSearchTerm(item.textContent, searchTerm);
                     break;
                 case 'title':
-                    matches = item.querySelector('h3').textContent.toLowerCase().includes(searchTerm);
+                    matches = includesSearchTerm(item.querySelector('h3').textContent, searchTerm);
                     break;
                 case 'lyrics':
-                    matches = item.querySelector('.lyrics-beginning').textContent.toLowerCase().includes(searchTerm);
+                    matches = includesSearchTerm(item.querySelector('.lyrics-beginning').textContent, searchTerm);
                     break;
                 case 'credit':
-                    matches = (!writer || item.querySelector('.songwriting').textContent.toLowerCase().includes(writer)) &&
-                             (!composer || item.querySelector('.songwriting').textContent.toLowerCase().includes(composer));
+                    const songwriting = item.querySelector('.songwriting').textContent.toLowerCase();
+                    const dataWriter = (item.dataset.writer || '').toLowerCase();
+                    const dataComposer = (item.dataset.composer || '').toLowerCase();
+
+                    const writerMatches = !writer || 
+                        includesSearchTerm(songwriting, writer) || 
+                        includesSearchTerm(dataWriter, writer);
+
+                    const composerMatches = !composer || 
+                        includesSearchTerm(songwriting, composer) || 
+                        includesSearchTerm(dataComposer, composer);
+
+                    matches = writerMatches && composerMatches;
                     break;
                 case 'album':
                     matches = (!album || (item.dataset.album || '').toLowerCase() === album);
@@ -221,14 +265,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 valueA = a.querySelector('h3').textContent;
                 valueB = b.querySelector('h3').textContent;
             } else if (sortType === 'release') {
-                valueA = a.querySelector('.release-date')?.textContent.match(/\d{4}年\d{1,2}月\d{1,2}日/) || '9999年99月99日';
-                valueB = b.querySelector('.release-date')?.textContent.match(/\d{4}年\d{1,2}月\d{1,2}日/) || '9999年99月99日';
+                valueA = a.dataset.release || '9999-99-99';
+                valueB = b.dataset.release || '9999-99-99';
+                return order === 'asc' ? 
+                    valueA.localeCompare(valueB) : 
+                    valueB.localeCompare(valueA);
             } else if (sortType === 'album-order') {
                 valueA = parseInt(a.dataset.albumOrder) || 999;
                 valueB = parseInt(b.dataset.albumOrder) || 999;
                 return order === 'asc' ? valueA - valueB : valueB - valueA;
             } else if (sortType.endsWith('-order')) {
-                // ライブのセットリスト順
                 valueA = parseInt(a.dataset[sortType]) || 999;
                 valueB = parseInt(b.dataset[sortType]) || 999;
                 return order === 'asc' ? valueA - valueB : valueB - valueA;
